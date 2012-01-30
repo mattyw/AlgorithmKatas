@@ -59,10 +59,23 @@ test_unsorted_list_size_two() {
   assert(memcmp(list_to_sort, expected, sizeof(int)*2) == 0);
 }
 
+test_unsorted_list_size_ten() {
+  int list_to_sort[10] = {6, 10, 3, 9, 5, 8, 2, 4, 1, 7};
+  int expected[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+  quicksort(list_to_sort, 0, 9);
+
+  print_array(list_to_sort, 10);
+
+  assert(memcmp(list_to_sort, expected, sizeof(int)*10) == 0);
+}
+
+
 
 
 int main() {
   test_empty_list();
   test_unsorted_list_size_one();
   test_unsorted_list_size_two();
+  test_unsorted_list_size_ten();
 }
