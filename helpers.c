@@ -6,3 +6,10 @@ print_array(int* arr, int size) {
   }
   printf("\n");
 }
+
+void swap(int* x, int* y) {
+  int temp;
+  temp = *x;
+  *x = *y;
+  *y = temp;
+}
