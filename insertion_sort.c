@@ -1,7 +1,6 @@
 #include <assert.h>
 #include <string.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 void isort(int a[], int size) {
   int unsorted, sorted, value;
@@ -58,17 +57,6 @@ test_unsorted_list_size_ten() {
 
   assert(memcmp(list_to_sort, expected, sizeof(int)*10) == 0);
 }
-
-
-print_array(int* arr, int size) {
-  int i;
-  for(i = 0; i < size; i++) {
-    printf("%d,", arr[i]);
-  }
-  printf("\n");
-}
-  
-
 
 int main() {
   test_empty_list();
