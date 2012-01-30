@@ -25,9 +25,21 @@ test_unsorted_list_size_one() {
   assert(memcmp(list_to_sort, expected, sizeof(int)*1) == 0);
 }
 
+test_unsorted_list_size_two() {
+  int list_to_sort[2] = {2, 1};
+  int expected[2] = {1, 2};
+
+  quicksort(list_to_sort, 2);
+
+  print_array(list_to_sort, 2);
+
+  assert(memcmp(list_to_sort, expected, sizeof(int)*2) == 0);
+}
+
 
 
 int main() {
   test_empty_list();
   test_unsorted_list_size_one();
+  test_unsorted_list_size_two();
 }
