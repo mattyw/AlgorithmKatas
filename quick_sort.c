@@ -5,6 +5,34 @@
 void quicksort(int a[], int left_pos, int right_pos);
 int partition(int a[], int left_pos, int right_pos);
 
+
+static int compare_int(const void* x, const void* y) {
+  //A useful function for comparing ints
+  if (*(const int *) x > *(const int *)y) {
+    return 1;
+  }
+  else if (*(const int *) x > *(const int *)y) {
+    return -1;
+  }
+  else {
+    return 0;
+  }
+}
+
+int median_of_three_pivot(int a[], int left_pos, int right_pos) {
+  /* quicksort's performance is dependant on the choice of a pivot. By using the median of three method we can 
+     get almost average case run time no matter what the list
+   */
+  int r[3];
+
+  r[0] = (rand() % (right_pos - left_pos + 1)) + left_pos;
+  r[1] = (rand() % (right_pos - left_pos + 1)) + left_pos;
+  r[2] = (rand() % (right_pos - left_pos + 1)) + left_pos;
+  qsort(r, 3, sizeof(int), compare_int);
+  return r[1]; //The median
+}
+
+
 void quicksort(int a[], int left_pos, int right_pos) {
   if (left_pos < right_pos) {
     int pi = partition(a, left_pos, right_pos);
@@ -15,7 +43,7 @@ void quicksort(int a[], int left_pos, int right_pos) {
 
 int partition(int a[], int left_pos, int right_pos) {
   int store, i;
-  int pivot = (right_pos + left_pos) / 2;
+  int pivot = median_of_three_pivot(a, left_pos, right_pos);
   swap(&a[pivot], &a[right_pos]);
   store = left_pos;
   for (i = left_pos; i < right_pos; i++) {
