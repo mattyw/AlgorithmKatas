@@ -25,8 +25,16 @@ void test_empty_list() {
   assert(binary_search(list, term) == 0);
 }
 
+void test_not_in_list() {
+  int list[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  int term = 11;
+
+  assert(binary_search(list, term) == 0);
+}
+
 
 
 int main() {
   test_empty_list();
+  test_not_in_list();
 }
